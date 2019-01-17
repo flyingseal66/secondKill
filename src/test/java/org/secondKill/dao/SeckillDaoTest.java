@@ -1,9 +1,9 @@
-package org.seckill.dao;
+package org.secondKill.dao;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seckill.entity.Seckill;
+import org.secondKill.entity.Seckill;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 

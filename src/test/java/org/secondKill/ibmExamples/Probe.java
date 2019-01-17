@@ -1,4 +1,4 @@
-package org.seckill.ibmExamples;
+package org.secondKill.ibmExamples;
 
 public class Probe extends Thread {
     public Probe() {}

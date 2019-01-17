@@ -1,4 +1,4 @@
-package org.seckill.ibmExamples;
+package org.secondKill.ibmExamples;
 import java.util.*;
 public class TimePrinterRunnable implements Runnable {
     int pauseTime;

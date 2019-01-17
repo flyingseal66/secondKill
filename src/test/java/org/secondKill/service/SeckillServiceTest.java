@@ -1,14 +1,14 @@
-package org.seckill.service;
+package org.secondKill.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seckill.dto.Exposer;
-import org.seckill.dto.SeckillExecution;
-import org.seckill.entity.Seckill;
-import org.seckill.exception.RepeatKillException;
-import org.seckill.exception.SeckillCloseException;
+import org.secondKill.dto.Exposer;
+import org.secondKill.dto.SeckillExecution;
+import org.secondKill.entity.Seckill;
+import org.secondKill.exception.RepeatKillException;
+import org.secondKill.exception.SeckillCloseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

@@ -1,14 +1,12 @@
-package org.seckill.dao.cache;
+package org.secondKill.dao.cache;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seckill.dao.SeckillDao;
-import org.seckill.entity.Seckill;
+import org.secondKill.dao.SeckillDao;
+import org.secondKill.entity.Seckill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by wchb7 on 16-5-27.
