@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-/**
- * Created by wchb7 on 16-5-27.
- */
+import static org.junit.Assert.*;
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/spring-dao.xml")
+@ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class RedisDaoTest {
 
-    private long id = 1001;
+    private long id = 1002;
 
     @Autowired
     private RedisDao redisDao;
@@ -24,8 +24,8 @@ public class RedisDaoTest {
     private SeckillDao seckillDao;
 
     @Test
-    public void testSeckill() throws Exception {
-        //get and put
+    public void getSeckill() {
+        // get and put 方法
         Seckill seckill = redisDao.getSeckill(id);
         if (seckill == null) {
             seckill = seckillDao.queryById(id);
@@ -36,7 +36,7 @@ public class RedisDaoTest {
                 System.out.println(seckill);
             }
         }
-    }
 
+    }
 
 }
