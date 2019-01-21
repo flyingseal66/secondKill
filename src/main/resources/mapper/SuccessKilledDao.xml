@@ -5,7 +5,7 @@
 <mapper namespace="org.secondKill.dao.SuccessKilledDao">
     <insert id="insertSuccessKilled">
         <!--  -->
-        insert ignore into success_killed(seckill_id, user_phone，state, create_time)
+        insert ignore into success_killed(seckill_id, user_phone,state, create_time)
         values (#{seckillId}, #{userPhone}, 0, sysdate)
     </insert>
 
