@@ -1,5 +1,7 @@
 package org.secondKill.dao;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
+import org.apache.mahout.cf.taste.model.DataModel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.secondKill.entity.Seckill;
@@ -7,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * 配置spring和jUnit整合，使jUnit启动时加载SpringIOC容器
@@ -21,7 +22,7 @@ import java.util.List;
 public class SeckillDaoTest {
 
     @Autowired
-    private SeckillDao seckillDao;
+    private SeckillDao seckillDao = null;
 
     @Test
     public void queryById() {
@@ -46,4 +47,7 @@ public class SeckillDaoTest {
             System.out.println(seckill);
         }
     }
+
+
+
 }

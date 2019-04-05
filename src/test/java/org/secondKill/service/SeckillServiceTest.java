@@ -2,6 +2,7 @@ package org.secondKill.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.secondKill.dao.cache.RedisDao;
 import org.secondKill.dto.Exposer;
 import org.secondKill.dto.SeckillExecution;
 import org.secondKill.entity.Seckill;
@@ -10,6 +11,8 @@ import org.secondKill.exception.SeckillCloseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,18 +28,26 @@ public class SeckillServiceTest {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private SeckillService seckillService;
+    private SeckillService seckillService2;
+
+    ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:spring/spring-dao.xml", "classpath:spring/spring-service.xml");
+    //RedisDao redisDao = (RedisDao) ctx.getBean("redisDao");
+
+
+
+
 
     @Test
     public void getSeckillList() {
-        List<Seckill> seckills = seckillService.getSeckillList();
+        System.out.println(ctx.isSingleton("redisDao"));
+        List<Seckill> seckills = seckillService2.getSeckillList();
         logger.info("list={}", seckills);
     }
 
     @Test
     public void getById() {
         long id = 1000;
-        Seckill seckill = seckillService.getById(id);
+        Seckill seckill = seckillService2.getById(id);
         logger.info("seckill = {}", seckill);
     }
 
@@ -46,13 +57,13 @@ public class SeckillServiceTest {
     @Test
     public void exportSeckillLogic() {
         long id = 1001;
-        Exposer exposer = seckillService.exportSeckillUrl(id);
+        Exposer exposer = seckillService2.exportSeckillUrl(id);
         if (exposer.isExposed()) {
             logger.info("exposer={}", exposer);
             Long userPhone =3889882728L;
             String md5 = exposer.getMd5();
             try {
-                SeckillExecution execution = seckillService.executeSeckill(id, userPhone, md5);
+                SeckillExecution execution = seckillService2.executeSeckill(id, userPhone, md5);
                 logger.info("result:{}", execution);
             } catch (SeckillCloseException e) {
                 logger.error(e.getMessage());
@@ -69,10 +80,10 @@ public class SeckillServiceTest {
     public void executeSeckillProcedure() {
         long seckillId = 1000;
         long phone = 19029384990l;
-        Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+        Exposer exposer = seckillService2.exportSeckillUrl(seckillId);
         if (exposer.isExposed()) {
             String md5 = exposer.getMd5();
-            SeckillExecution execution = seckillService.executeSeckillProcedure(seckillId,phone, md5);
+            SeckillExecution execution = seckillService2.executeSeckillProcedure(seckillId,phone, md5);
             logger.info(execution.getStateInfo());
         }
     }

@@ -1,8 +1,11 @@
 package org.secondKill.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Seckill {
+public class Seckill implements Serializable {
+
+
 
     private long seckillId;
 
@@ -15,6 +18,13 @@ public class Seckill {
     private Date endTime;
 
     private Date createDate;
+
+
+
+    public Seckill(long seckillId, String name) {
+        this.seckillId = seckillId;
+        this.name = name;
+    }
 
     public long getSeckillId() {
         return seckillId;
